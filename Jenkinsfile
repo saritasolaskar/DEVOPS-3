@@ -3,6 +3,12 @@ pipeline {
 
     stages {
 
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/saritasolaskar/DEVOPS-3.git'
+            }
+        }
+
         stage('Build') {
             steps {
                 echo 'Building application...'
@@ -21,9 +27,15 @@ pipeline {
             }
         }
 
+        stage('Stop Old Container') {
+            steps {
+                bat 'docker rm -f devops-app-container || exit 0'
+            }
+        }
+
         stage('Run Container') {
             steps {
-                bat 'docker run -d -p 3000:3000 devops-app'
+                bat 'docker run -d --name devops-app-container -p 3000:3000 devops-app'
             }
         }
     }
