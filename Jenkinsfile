@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Code') {
-            steps {
-                git 'https://github.com/saritasolaskar/DEVOPS-3.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 echo 'Building application...'
@@ -17,7 +11,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo 'Running tests...'
+                echo 'Testing application...'
             }
         }
 
