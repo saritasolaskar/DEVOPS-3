@@ -1,7 +1,10 @@
-const http = require('http');
+const express = require('express');
+const app = express();
 
-http.createServer((req, res) => {
-    res.end("Hello from DevOps Pipeline!");
-}).listen(3000);
+app.get('/', (req, res) => {
+    res.send("Hello DevOps Pipeline Working!");
+});
 
-console.log("Server running on port 3000");
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
+});
